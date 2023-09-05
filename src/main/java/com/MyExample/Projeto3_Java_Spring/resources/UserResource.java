@@ -1,5 +1,7 @@
 package com.MyExample.Projeto3_Java_Spring.resources;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -15,7 +17,9 @@ public class UserResource {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<User>> findAll(){
-		return ResponseEntity.ok().body();
+		User maria = new User("1", "Maria Brown", "ma@gmail.com");
+		List<User> list = new ArrayList<>();
+		list.addAll(Arrays.asList(maria));
+		return ResponseEntity.ok().body(list);
 	}
-	
 }
