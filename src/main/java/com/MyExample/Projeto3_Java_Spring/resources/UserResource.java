@@ -1,6 +1,7 @@
 package com.MyExample.Projeto3_Java_Spring.resources;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.MyExample.Projeto3_Java_Spring.domain.User;
+import com.MyExample.Projeto3_Java_Spring.dto.UserDTO;
 import com.MyExample.Projeto3_Java_Spring.services.UserService;
 
 @RestController
@@ -24,7 +26,7 @@ public class UserResource {
 	//Declarando de endpoints:
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<User>> findAll(){
+	public ResponseEntity<List<UserDTO>> findAll(){
 		
 		//(TESTE)
 		//Instanciando usuários de forma manual, para poder fazer a requisição no Postman 
@@ -36,6 +38,7 @@ public class UserResource {
 		
 		//Recuperando usuários direto do MongoDB
 		List<User> list = service.findAll();
-		return ResponseEntity.ok().body(list);
+		List<UserDTO> listDTO = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());  //Conversão de cada elemento da lista 'list' em um elemento do tipo DTO
+		return ResponseEntity.ok().body(listDTO);
 	}
 }
