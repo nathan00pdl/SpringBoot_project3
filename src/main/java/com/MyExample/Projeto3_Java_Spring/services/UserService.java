@@ -30,6 +30,10 @@ public class UserService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
 	
+	
+	
+	//Implementando operações básicas de CRUD
+	
 	//Inserindo usuários - INSERT
 	public User insert(User obj) {
 		return repository.insert(obj);
@@ -40,6 +44,21 @@ public class UserService {
 		findById(id);
 		repository.deleteById(id);
 	}
+	
+	//Atualizando usuários - UPDATE
+	public User update(User obj) {
+		User newObj = findById(obj.getId());
+		updateData(newObj, obj);
+		return repository.save(newObj);
+		}
+	
+	private void updateData(User newObj, User obj) {
+		newObj.setName(obj.getName());
+		newObj.setEmail(obj.getEmail());
+	}
+
+	
+	
 	
 	//Método que "pega" um DTO ('objDTO') e instancia um usuário
 	public User fromDTO(UserDTO objDTO) {

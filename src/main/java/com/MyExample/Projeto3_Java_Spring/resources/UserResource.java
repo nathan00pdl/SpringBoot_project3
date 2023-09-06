@@ -21,10 +21,11 @@ import com.MyExample.Projeto3_Java_Spring.services.UserService;
 @RequestMapping(value = "/users")
 public class UserResource {
 
-	//Declarando "injeção de dependência" para os serviço
+	//Declarando "injeção de dependência" para os serviços
 	
 	@Autowired
 	private UserService service;
+	
 	
 	
 	//Declarando de endpoints:
@@ -54,6 +55,9 @@ public class UserResource {
 	}
 	
 	
+	
+	//Implementando operações básicas de CRUD
+	
 	//Inserindo usuários - INSERT
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody UserDTO objDTO){
@@ -67,7 +71,16 @@ public class UserResource {
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable String id){
 		//Recuperando usuários direto do MongoDB pelo id
-		service.delete(id));
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+	}
+	
+	//Atualizando usuários - UPDATE
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody UserDTO objDTO, @PathVariable String id){
+		User obj = service.fromDTO(objDTO);
+		obj.setId(id);
+		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
 }
