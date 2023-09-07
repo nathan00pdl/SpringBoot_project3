@@ -1,9 +1,12 @@
 package com.MyExample.Projeto3_Java_Spring.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "user")  //Indica ao MongoDB que a classe 'User' será uma coleção
@@ -18,7 +21,8 @@ public class User implements Serializable{
 	private String email;
 	
 	//Declarando Associações
-	
+	@DBRef(lazy = true)
+	private List<Post> posts = new ArrayList<>();
 	
 	//Declarando Construtores
 	public User() {}
@@ -54,6 +58,15 @@ public class User implements Serializable{
 		this.email = email;
 	}
 
+	
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+	
 	
 	//Declarando métodos Equals e HashCode
 	@Override
