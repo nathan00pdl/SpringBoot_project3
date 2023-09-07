@@ -21,7 +21,7 @@ public class User implements Serializable{
 	private String email;
 	
 	//Declarando Associações
-	@DBRef(lazy = true)
+	@DBRef(lazy = true)  //Indica que há uma referência par auma nova coleção no MongoDB
 	private List<Post> posts = new ArrayList<>();
 	
 	//Declarando Construtores
