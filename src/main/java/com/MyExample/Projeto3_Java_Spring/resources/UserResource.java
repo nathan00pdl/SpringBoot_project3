@@ -22,11 +22,10 @@ import com.MyExample.Projeto3_Java_Spring.services.UserService;
 @RequestMapping(value = "/users")
 public class UserResource {
 
-	//Declarando "injeção de dependência" para os serviços
+	//Declarando "injeção de dependência"
 	
 	@Autowired
 	private UserService service;
-	
 	
 	
 	//Declarando de endpoints:
@@ -84,6 +83,7 @@ public class UserResource {
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
+	
 	
 	
 	//Retornando posts de um usuário
