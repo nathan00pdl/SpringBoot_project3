@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import com.MyExample.Projeto3_Java_Spring.domain.Post;
 import com.MyExample.Projeto3_Java_Spring.domain.User;
 import com.MyExample.Projeto3_Java_Spring.dto.AuthorDTO;
+import com.MyExample.Projeto3_Java_Spring.dto.CommentDTO;
 import com.MyExample.Projeto3_Java_Spring.repositories.PostRepository;
 import com.MyExample.Projeto3_Java_Spring.repositories.UserRepository;
 
@@ -50,6 +51,15 @@ public class Instantiation implements CommandLineRunner {
 		//Instanciando Posts
 		Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem!", "Vou viajar para São Paulo. Abraços!", new AuthorDTO(u1));
 		Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bom dia!", "Bora para mais um diazão!", new AuthorDTO(u1));
+		
+		//Instanciando comentários
+		CommentDTO c1 = new CommentDTO("Boa viagem mano!", sdf.parse("21/03/2018"), new AuthorDTO(u2));
+		CommentDTO c2 = new CommentDTO("Aproveite", sdf.parse("22/03/2018"), new AuthorDTO(u3));
+		CommentDTO c3 = new CommentDTO("Tenha um ótimo dia!", sdf.parse("23/03/2018"), new AuthorDTO(u2));
+		
+		//Associando comentários aos posts
+		post1.getComments().addAll(Arrays.asList(c1,c2));
+		post2.getComments().addAll(Arrays.asList(c3));
 		
 		//Salvando posts instancidos no MongoDB
 		postRepository.saveAll(Arrays.asList(post1, post2));

@@ -1,13 +1,16 @@
 package com.MyExample.Projeto3_Java_Spring.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.MyExample.Projeto3_Java_Spring.dto.AuthorDTO;
+import com.MyExample.Projeto3_Java_Spring.dto.CommentDTO;
 
 @Document
 public class Post implements Serializable{
@@ -21,9 +24,10 @@ public class Post implements Serializable{
 	private String title;
 	private String body;
 	
-	//Declarando Associação
+	//Declarando Associações
 	private AuthorDTO author;
 	
+	private List<CommentDTO> comments = new ArrayList<>();
 	
 	//Declarando Construtores
 	public Post() {}
@@ -75,6 +79,15 @@ public class Post implements Serializable{
 	}
 	public void setAuthorDTO(AuthorDTO authorDTO) {
 		this.author = authorDTO;
+	}
+	
+	
+	public List<CommentDTO> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<CommentDTO> comments) {
+		this.comments = comments;
 	}
 	
 	
