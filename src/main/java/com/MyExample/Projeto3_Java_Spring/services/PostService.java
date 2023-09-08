@@ -1,5 +1,6 @@
 package com.MyExample.Projeto3_Java_Spring.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,20 @@ import com.MyExample.Projeto3_Java_Spring.services.exception.ObjectNotFoundExcep
 @Service
 public class PostService {
 
-	//Declarando "injeção de dependência" para o recurso
+	//Declarando "injeção de dependência"
+	
 	@Autowired
 	private PostRepository repository;
 	
-	//Declarando endpoint
+	
+	//Declarando endpoints
+	
 	public Post findById(String id) {
 		Optional<Post> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+	}
+	
+	public List<Post> FinfByTitle(String text){
+		return repository.findByTitleContaining(text);
 	}
 }
