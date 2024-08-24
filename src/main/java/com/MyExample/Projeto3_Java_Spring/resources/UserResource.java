@@ -21,14 +21,9 @@ import com.MyExample.Projeto3_Java_Spring.services.UserService;
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
-
-	//Declarando "injeção de dependência"
 	
 	@Autowired
 	private UserService service;
-	
-	
-	//Declarando de endpoints:
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<UserDTO>> findAll(){
@@ -40,8 +35,6 @@ public class UserResource {
 		//list.addAll(Arrays.asList(maria));
 		//return ResponseEntity.ok().body(list);
 		
-		
-		//Recuperando usuários direto do MongoDB
 		List<User> list = service.findAll();
 		List<UserDTO> listDTO = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());  //Conversão de cada elemento da lista 'list' em um elemento do tipo DTO
 		return ResponseEntity.ok().body(listDTO);
@@ -49,16 +42,10 @@ public class UserResource {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<UserDTO> findById(@PathVariable String id){
-		//Recuperando usuários direto do MongoDB pelo id
 		User obj = service.findById(id);
 		return ResponseEntity.ok().body(new UserDTO(obj));
 	}
 	
-	
-	
-	//Implementando operações básicas de CRUD
-	
-	//Inserindo usuários - INSERT
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody UserDTO objDTO){
 		User obj = service.fromDTO(objDTO);
@@ -67,7 +54,6 @@ public class UserResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	//Deletando usuários - DELETE 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable String id){
 		//Recuperando usuários direto do MongoDB pelo id
@@ -75,7 +61,6 @@ public class UserResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	//Atualizando usuários - UPDATE
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody UserDTO objDTO, @PathVariable String id){
 		User obj = service.fromDTO(objDTO);
@@ -84,9 +69,6 @@ public class UserResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	
-	
-	//Retornando posts de um usuário
 	@RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
 	public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
 		User obj = service.findById(id);

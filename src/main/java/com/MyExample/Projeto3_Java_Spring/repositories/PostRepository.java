@@ -11,8 +11,6 @@ import com.MyExample.Projeto3_Java_Spring.domain.Post;
 
 @Repository
 public interface PostRepository extends MongoRepository<Post, String> {
-
-	//Declarando métodos responsáveis pelas queries
 	
 	@Query("{ 'title': { $regex: ?0, $options: 'i' } }")
 	List<Post> searchTitle(String text);

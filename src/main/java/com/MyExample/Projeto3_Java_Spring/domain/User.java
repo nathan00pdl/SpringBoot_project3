@@ -9,7 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "user")  //Indica ao MongoDB que a classe 'User' será uma coleção
+@Document(collection = "user")  
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -20,28 +20,22 @@ public class User implements Serializable{
 	private String name;
 	private String email;
 	
-	//Declarando Associações
-	@DBRef(lazy = true)  //Indica que há uma referência par auma nova coleção no MongoDB
+	@DBRef(lazy = true) 
 	private List<Post> posts = new ArrayList<>();
 	
-	//Declarando Construtores
 	public User() {}
-
 	public User(String id, String name, String email) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
 	}
 
-	
-	//Declarando métodos getters e setters
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-
 	
 	public String getName() {
 		return name;
@@ -50,7 +44,6 @@ public class User implements Serializable{
 		this.name = name;
 	}
 
-	
 	public String getEmail() {
 		return email;
 	}
@@ -58,17 +51,13 @@ public class User implements Serializable{
 		this.email = email;
 	}
 
-	
 	public List<Post> getPosts() {
 		return posts;
 	}
-
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
 	
-	
-	//Declarando métodos Equals e HashCode
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

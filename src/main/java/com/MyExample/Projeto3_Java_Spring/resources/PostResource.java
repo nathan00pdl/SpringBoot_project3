@@ -18,14 +18,9 @@ import com.MyExample.Projeto3_Java_Spring.services.PostService;
 @RestController
 @RequestMapping(value = "/users")
 public class PostResource {
-
-	//Declarando "injeção de dependência"
 	
 	@Autowired
 	private PostService service;
-	
-	
-	//Declarando de endpoints:
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Post> findById(@PathVariable String id){
