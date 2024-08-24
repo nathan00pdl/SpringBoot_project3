@@ -24,14 +24,11 @@ public class Post implements Serializable{
 	private String title;
 	private String body;
 	
-	//Declarando Associações
 	private AuthorDTO author;
 	
 	private List<CommentDTO> comments = new ArrayList<>();
 	
-	//Declarando Construtores
 	public Post() {}
-
 	public Post(String id, Date date, String title, String body, AuthorDTO author) {
 		this.id = id;
 		this.date = date;
@@ -40,15 +37,12 @@ public class Post implements Serializable{
 		this.author = author;
 	}
 	
-	
-	//Declarando métodos getters e setters
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-
 
 	public Date getDate() {
 		return date;
@@ -57,14 +51,12 @@ public class Post implements Serializable{
 		this.date = date;
 	}
 
-
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
 
 	public String getBody() {
 		return body;
@@ -73,14 +65,12 @@ public class Post implements Serializable{
 		this.body = body;
 	}
 	
-	
 	public AuthorDTO getAuthorDTO() {
 		return author;
 	}
 	public void setAuthorDTO(AuthorDTO authorDTO) {
 		this.author = authorDTO;
 	}
-	
 	
 	public List<CommentDTO> getComments() {
 		return comments;
@@ -90,8 +80,6 @@ public class Post implements Serializable{
 		this.comments = comments;
 	}
 	
-	
-	//Declaradno métodos Equals e HashCode
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
