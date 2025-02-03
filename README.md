@@ -1,34 +1,34 @@
-# Projeto Spring Boot 3
+# Java project - API with Spring Boot and MongoDB
+
+### License
+
+This project is distributed under the **MIT** license.
+
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/nathan00pdl/Projeto2_Java_Spring/blob/main/LICENSE) 
 
-# Sobre o projeto
+# About the project 
 
-Esse projeto foi realizado em conjunto com as aulas disponibilizadas no curso "java COMPLETO 2023 Programação Orientada a Objetos + Projetos" na plataforma [Udemy](https://www.udemy.com/).
+This project was carried out in conjunction with the classes available in the course ***"COMPLETE Java 2023 Object-Oriented Programming + Projects"*** on the [Udemy](https://www.udemy.com/) platform.
 
-De forma resumida, o desenvolvimento foi feito com o framework Spring Boot fazendo conexão ao banco de dados MongoDB, envolvendo um sistema básico de usuários, posts e comentários.
+Developed in **Java**, using the **Spring Boot** framework to create a **REST API**. The system implements a basic model of users, posts and comments, with data persistence in a **NoSQL - MongoDB** database. 
 
-# Competências
-- Padrão de Projeto: DAO (Data Access Object)
-- Padrão de Projeto: DTO (Data Transfer Object)
-- Sistema em camadas
+## Project structure
+- Design patterns: **DAO** (Data Access Object) and **DTO** (Data Transfer Object)
+- **Layered System - MVC**
 
-
-# Tecnologias utilizadas
-## Back end
-- Java
-- Spring Boot (principal framework java para desenvolvimento comercial)
-- JPA / Hibernate (acesso a dados com mapeamento objeto-relacional (ORM))
-- Maven (gerenciamento de dependências)
+## Backend
+- **Java**
+- **Spring Boot**
+- **JPA** + **Hibernate** (data access with Object-Relational Mapping - ORM)
+- **Maven** (Dependency management)
   
-## Conexão ao banco de dados
-- JDBC (acesso a dados baseado em SQL)
+## Connection to the database
+- **JDBC** (SQL-based data access)
   
-## Requisições web
-- Postman (teste de requisições com métodos GET, PUT, POST e DELETE)
+## Web requests
+- **Postman** (testing requests with methods GET, PUT, POST e DELETE)
 
-
-
-# Autor
+### Contact with me
 
 Nathan Paiva de Lacerda
 
