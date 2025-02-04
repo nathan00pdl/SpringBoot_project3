@@ -14,7 +14,7 @@ Developed in **Java**, using the **Spring Boot** framework to create a **REST AP
 
 ## Project structure
 - Design patterns: **DAO** (Data Access Object) and **DTO** (Data Transfer Object)
-- **Layered System - MVC**
+- **Layered architecture - MVC**
 
 ## Backend
 - **Java**
