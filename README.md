@@ -13,8 +13,8 @@ This project was carried out in conjunction with the classes available in the co
 Developed in **Java**, using the **Spring Boot** framework to create a **REST API**. The system implements a basic model of **users**, **posts** and **comments**, with data persistence in a **NoSQL - MongoDB** database. 
 
 ## Project Structure
-- Design patterns: **DAO** (Data Access Object) and **DTO** (Data Transfer Object)
 - **Layered architecture - MVC**
+- Design patterns: **DAO** (Data Access Object) and **DTO** (Data Transfer Object)
 
 ## Backend
 - **Java**
